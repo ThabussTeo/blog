@@ -1,0 +1,10 @@
+<div class="article font-monospace mt-5">
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title fw-bold fs-3">{{ category.title }}</h5>
+            <p>{{ category.articles.count }} article(s) found</p>
+            <a href="{{ path('app_category', {'slug': category.slug}) }}" class="btn btn-primary mt-5">Read the article(s)</a>
+        </div>
+    </div>
+</div>
+

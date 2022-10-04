@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+
+
+{% block body %}
+
+    <h1 class="fs-1 mb-4 mt-5">Here are my last 10 articles :</h1>
+
+        {% for article in articles %}
+
+            {{ include('partials/_article.html.twig') }}
+
+        {% endfor %}
+    
+{% endblock %}

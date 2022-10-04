@@ -1,0 +1,14 @@
+<div class="article font-monospace mt-5">
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title fw-bold fs-3">{{ article.title }}</h5>
+            <h3 class="card-subtitle mb-2 fs-6 mb-2">Created at {{ article.createdAt | date('d/m/Y') }}</h3>
+            {% if article.category %}
+                <p>Category: <a href="{{ path('app_category', {'slug': article.category.slug}) }}"><span class="badge bg-secondary">{{ article.category.title }}</span></a></p>
+            {% endif %}
+            <a href="{{ path('app_article', {'slug': article.slug}) }}" class="btn btn-primary mt-5">Read more</a>
+
+        </div>
+    </div>
+</div>
+

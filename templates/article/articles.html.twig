@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}My Articles{% endblock %}
+
+
+
+{% block body %}
+
+    <a href="{{ path('app_article_new') }}" class="btn btn-primary mt-3">Add an article</a>
+
+
+    {% if articleCount is defined %}
+
+    <h1 class="mt-5">{{ articleCount }} article(s) found</h1>
+
+    {% endif %}
+
+    {% for article in articles %}
+
+        {{ include('partials/_article.html.twig') }}
+
+    {% endfor %}
+
+    <div class="navigation d-flex justify-content-center">
+        {{ knp_pagination_render(articles) }}
+    </div>
+
+{% endblock %}

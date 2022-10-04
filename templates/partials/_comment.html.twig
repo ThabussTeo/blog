@@ -1,0 +1,13 @@
+<div class="article font-monospace">
+    <div class="card mt-3" style="width: 25%;">
+        <div class="card-body">
+            {% if comment.user %}
+            <h2 class="card-title fw-bold fs-4">{{ comment.user.username }}</h2>
+            {% else %}
+            <h2 class="card-title fw-bold fs-4">Anonymous</h2>
+            {% endif %}
+            <h3 class="card-subtitle mb-2 fs-6 mb-2">Commented at {{ comment.createdAt | date('d/m/Y') }} </h3>
+            <p class="card-text fs-6">{{ comment.content }}</p>
+        </div>
+    </div>
+</div>

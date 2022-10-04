@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+
+
+{% block body %}
+
+    {{ include('partials/_articleFull.html.twig') }}
+
+    {% if comments %}
+
+        <h2>{{ commentsCount }} comment(s)</h2>
+
+        {% for comment in comments %}
+
+            {{ include('partials/_comment.html.twig') }}
+
+        {% endfor %}
+
+    {% endif %}
+
+{% endblock %}

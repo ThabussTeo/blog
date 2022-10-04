@@ -1,0 +1,42 @@
+@startuml
+
+class Article {
+
+    -id : int
+    -title : string
+    -content : string
+    -slug : string
+
+}
+
+class Categorie {
+
+    -id : int
+    -title : string
+    -slug : string
+
+}
+
+class Comment {
+
+    -id : int
+    -?author : User
+    -content : string
+    -createdAt : DateTime
+
+}
+
+class User {
+
+    -id : int
+    -username : string
+    -firstname : string
+    -lastname : string
+
+}
+
+Article "0..* " -- "1 " Categorie
+Article "1 " -- "0..*   " Comment
+User "0..1 " -- "0..* " Comment
+
+@enduml

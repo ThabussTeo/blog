@@ -1,0 +1,31 @@
+<?php
+
+namespace App\DataFixtures;
+
+use App\Entity\User;
+use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Persistence\ObjectManager;use Faker\Factory;
+
+class UserFixtures extends Fixture
+{
+    public function load(ObjectManager $manager): void
+    {
+
+        $faker = Factory::create();
+
+        for ($i=0;$i<13;$i++) {
+
+            $user = new User();
+            $user->setUsername($faker->word())
+                 ->setLastname($faker->word())
+                 ->setFirstname($faker->word());
+
+            $this->addReference("user".$i, $user);
+
+            $manager->persist($user);
+
+        }
+
+        $manager->flush();
+    }
+}
