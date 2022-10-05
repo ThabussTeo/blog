@@ -6,6 +6,7 @@ class Article {
     -title : string
     -content : string
     -slug : string
+    -isPublished : bool
 
 }
 
@@ -35,7 +36,7 @@ class User {
 
 }
 
-Article "0..* " -- "1 " Categorie
+Article "0..* " -- "0..1 " Categorie
 Article "1 " -- "0..*   " Comment
 User "0..1 " -- "0..* " Comment
 
