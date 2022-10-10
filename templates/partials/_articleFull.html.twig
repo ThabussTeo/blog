@@ -1,4 +1,4 @@
-<div class="article font-monospace">
+<div class="article font-monospace mb-3">
     <div class="card mt-3">
         <div class="card-body">
             <h2 class="card-title fw-bold fs-1">{{ article.title }}</h2>
@@ -8,8 +8,10 @@
                 <p>Category: <a href="{{ path('app_articles') }}"><span class="badge bg-secondary">No category</span></a></p>
             {% endif %}
             <h3 class="card-subtitle mb-2 fs-6 mb-5">Created at {{ article.createdAt | date('d/m/Y') }} </h3>
-            <p class="card-text fs-4">{{ article.content }}</p>
-            <a href="{{ path('app_articles') }}" class="btn btn-primary mt-5">Back to the articles</a>
+            <hr>
+            <p class="card-text fs-4">{{ article.content | raw }}</p>
+            <hr>
+            <a href="{{ path('app_articles') }}" class="btn btn-primary mt-2">Back to the articles</a>
         </div>
     </div>
 </div>

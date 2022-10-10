@@ -97,7 +97,7 @@ class ArticleController extends AbstractController
 
         }
 
-        return $this->renderForm("article/new.html.twig", [
+        return $this->renderForm("article/newArticle.html.twig", [
             "articleForm" => $articleForm
         ]);
     }

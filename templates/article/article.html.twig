@@ -8,7 +8,10 @@
 
     {{ include('partials/_articleFull.html.twig') }}
 
+
     {{ include('partials/_newComment.html.twig') }}
+
+    <hr class="my-4">
 
     {% if comments %}
 
@@ -21,5 +24,6 @@
         {% endfor %}
 
     {% endif %}
+
 
 {% endblock %}

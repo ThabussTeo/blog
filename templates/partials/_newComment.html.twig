@@ -1,8 +1,7 @@
 {{ form_start(commentForm) }}
 
-
-
-
+{{ form_row(commentForm.username, {"value" : ""}) }}
+{{ form_row(commentForm.content, {"value" : ""}) }}
 <input type="submit" class="btn btn-primary" value="Add a comment">
 
 {{ form_end(commentForm) }}
