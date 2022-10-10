@@ -9,8 +9,13 @@
     <h1 class="my-3">Create a new article</h1>
     {{ form_start(articleForm) }}
 
+
+
     {{ form_row(articleForm.title) }}
     {{ form_row(articleForm.content) }}
+    {{ form_row(articleForm.category) }}
+    {{ form_row(articleForm.isPublished)}}
+
     <input type="submit" class="btn btn-primary" value="Add an article">
 
     {{ form_end(articleForm) }}

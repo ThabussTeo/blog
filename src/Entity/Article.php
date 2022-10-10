@@ -7,8 +7,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
+#[UniqueEntity("title", message: "There is already an article with this name.")]
 class Article
 {
     #[ORM\Id]
@@ -17,6 +20,8 @@ class Article
     private ?int $id = null;
 
     #[ORM\Column(length: 200)]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 5, minMessage: "Title needs to be at least 5 caracters")]
     private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT)]
@@ -33,6 +38,9 @@ class Article
 
     #[ORM\OneToMany(mappedBy: 'article', targetEntity: Comment::class)]
     private Collection $Comment;
+
+    #[ORM\Column]
+    private ?bool $isPublished = null;
 
     public function __construct()
     {
@@ -130,6 +138,18 @@ class Article
                 $comment->setArticle(null);
             }
         }
+
+        return $this;
+    }
+
+    public function isIsPublished(): ?bool
+    {
+        return $this->isPublished;
+    }
+
+    public function setIsPublished(bool $isPublished): self
+    {
+        $this->isPublished = $isPublished;
 
         return $this;
     }

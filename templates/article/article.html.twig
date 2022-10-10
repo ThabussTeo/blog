@@ -8,9 +8,11 @@
 
     {{ include('partials/_articleFull.html.twig') }}
 
+    {{ include('partials/_newComment.html.twig') }}
+
     {% if comments %}
 
-        <h2>{{ commentsCount }} comment(s)</h2>
+        <h2>{{ comments | length }} comment(s)</h2>
 
         {% for comment in comments %}
 

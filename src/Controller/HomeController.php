@@ -19,7 +19,7 @@ class HomeController extends AbstractController {
     public function home(): Response
     {
         return $this->render('home/home.html.twig', [
-            "articles" => $this->repository->findBy([], ['createdAt' => 'DESC'], limit : 10)
+            "articles" => $this->repository->findBy(["isPublished" => true], ['createdAt' => 'DESC'], limit : 10)
         ]);
     }
 
