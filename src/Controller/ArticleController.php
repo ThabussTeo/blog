@@ -102,6 +102,32 @@ class ArticleController extends AbstractController
         ]);
     }
 
+    #[Route('/articles/edit/{slug}', name: 'app_article_edit',  methods: ["GET", "POST"], priority: 1)]
+    public function editArticle(SluggerInterface $slugger, Request $request, $slug): Response
+    {
+
+        $article = $this->articleRepository->findOneBy(["slug" => $slug]);
+        $articleForm = $this->createForm(ArticleType::class, $article);
+
+        $articleForm->handleRequest($request);
+
+        if ($articleForm->isSubmitted() && $articleForm->isValid()) {
+            $article->setSlug($slugger->slug($article->getTitle())->lower());
+
+            $this->articleRepository->add($article, true);
+            return $this->redirectToRoute("app_articles");
+
+        }
+
+        return $this->renderForm("article/editArticle.html.twig", [
+            "articleForm" => $articleForm,
+            "article" => $article
+        ]);
+    }
+
+
+
+
 
 
 }

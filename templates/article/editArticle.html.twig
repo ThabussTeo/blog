@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create a new article{% endblock %}
+
+
+
+{% block body %}
+
+    <h1 class="my-3">Edit an article</h1>
+    {{ form_start(articleForm) }}
+
+
+
+    {{ form_row(articleForm.title)}}
+    {{ form_row(articleForm.content)}}
+    {{ form_row(articleForm.category)}}
+    {{ form_row(articleForm.isPublished)}}
+
+    <input type="submit" class="btn btn-primary" value="Edit the article">
+
+    {{ form_end(articleForm) }}
+
+
+
+{% endblock %}
